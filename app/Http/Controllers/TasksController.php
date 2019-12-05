@@ -14,12 +14,16 @@ class TasksController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        if(\Auth::check()){
         $tasks = Task::all();
 
-        return view('welcome', [
+        return view('tasks.index', [
             'tasks' => $tasks,
         ]);
+        }
+        
+        return view('welcome');
     }
 
     /**
